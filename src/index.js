@@ -8,7 +8,7 @@ import Contact from "./pages/Contact";
 import NoPage from "./pages/NoPage";
 import Footer from "./pages/Footer";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "bootstrap-icons/font/bootstrap-icons.css";
+// import "bootstrap-icons/font/bootstrap-icons.css";
 
 
 export default function App() {

@@ -11,27 +11,23 @@ return(
   <section class="mb-4">
       <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
 
-      <FaFacebook />
+      <FaFacebook size={30}/>
       </a>
 
       <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-        <FaTwitter />
+        <FaTwitter size={30}/>
       </a>
 
       <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-      <FaTwitter />
+        <FaInstagram size={30}/>
       </a>
 
       <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-        <FaInstagram />
+        <FaLinkedinIn size={30}/>
       </a>
 
       <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-        <FaLinkedinIn />
-      </a>
-
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-        <FaGithub /></a> 
+        <FaGithub size={30}/></a> 
     </section>
     <div>
         © 2020 Copyright:

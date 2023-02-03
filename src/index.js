@@ -7,7 +7,10 @@ import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
 import NoPage from "./pages/NoPage";
 import Footer from "./pages/Footer";
+import Login from "./pages/Login";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
 // import "bootstrap-icons/font/bootstrap-icons.css";
 
 
@@ -20,6 +23,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="blogs" element={<Blogs />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="Login" element={<Login />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

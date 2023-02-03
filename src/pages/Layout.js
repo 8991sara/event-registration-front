@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Outlet, Link } from "react-router-dom";
-import { Navbar, NavDropdown, Nav, Container, Form, Button } from 'react-bootstrap';
+import { Outlet } from "react-router-dom";
+import { Navbar, Nav, Container, Form, Button } from 'react-bootstrap';
 
 const Layout = () => {
   return (

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Navbar, NavDropdown, Nav, Container } from 'react-bootstrap';
+import {  Container } from 'react-bootstrap';
 import { FaTwitter, FaFacebook, FaInstagram,FaGithub,FaLinkedinIn } from "react-icons/fa";
 
 const Footer = () => {

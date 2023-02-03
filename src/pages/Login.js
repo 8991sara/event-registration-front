@@ -12,7 +12,7 @@ import {
   MDBCheckbox
 }
 from 'mdb-react-ui-kit';
-
+import axiosBaseURL from '../httpCommon';
 function App() {
 
   const [justifyActive, setJustifyActive] = useState('tab1');;
@@ -26,11 +26,22 @@ function App() {
   };
 
   const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(`The name you entered was: ${email}`);
+    alert(`The name you entered was: ${email} and ${pass}`);
+    axiosBaseURL.post('api/token/', {
+        email: 'h.montazer@uid.ir',
+        password: 'hosein123456'
+    })
+    .then(res => {
+        console.log(res);
+        console.log(res.data);
+    })
+    .catch(error => console.log(error));
   }
+
 
   return (
     <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
@@ -77,14 +88,14 @@ function App() {
           </div>
           <form onSubmit={handleSubmit}>
             <MDBInput   wrapperClass='mb-4' label='Email address' id='form1' type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
-            <MDBInput wrapperClass='mb-4' label='Password' id='form2' type='password'/>
+            <MDBInput wrapperClass='mb-4' label='Password' id='form2' type='password' value={pass} onChange={(e) => setPass(e.target.value)}/>
 
             <div className="d-flex justify-content-between mx-4 mb-4">
                 <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me' />
                 <a href="!#">Forgot password?</a>
             </div>
 
-            <MDBBtn type="submit" value={email} onChange={(e) => setEmail(e.target.value)} className="mb-4 w-100">Sign in</MDBBtn>
+            <MDBBtn type="submit"  className="mb-4 w-100">Sign in</MDBBtn>
           </form>
           <p className="text-center">Not a member? <a href="#!">Register</a></p>
 

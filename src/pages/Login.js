@@ -13,8 +13,40 @@ import {
 }
 from 'mdb-react-ui-kit';
 import axiosBaseURL from '../httpCommon';
+import jwt_decode from "jwt-decode";
+import Home from "./Home";
+
+
+
 
 function App() {
+
+    if (localStorage.getItem('access-token') !== null) {
+        const accessToken = JSON.parse(localStorage.getItem('access-token'));
+        //console.log(`token is ${accessToken}`);
+        console.log(`token is avalible`);
+      
+        try {
+          if (jwt_decode(accessToken).exp < Date.now() / 1000) {
+            console.log(`token is expired`);
+            //return <Login />;
+            localStorage.clear();
+          }else{
+            console.log('token is valid');
+            return <Home />;
+            //localStorage.clear();
+          } 
+          } catch (e) {
+            //window.location = "/login";
+            localStorage.clear();
+            console.log(e)
+          }
+          
+      
+        
+      } else {
+        console.log(`token not found`);
+      }
 
   const [justifyActive, setJustifyActive] = useState('tab1');;
 

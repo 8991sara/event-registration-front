@@ -13,6 +13,7 @@ import {
 }
 from 'mdb-react-ui-kit';
 import axiosBaseURL from '../httpCommon';
+
 function App() {
 
   const [justifyActive, setJustifyActive] = useState('tab1');;
@@ -32,14 +33,22 @@ function App() {
     event.preventDefault();
     alert(`The name you entered was: ${email} and ${pass}`);
     axiosBaseURL.post('api/token/', {
-        email: 'h.montazer@uid.ir',
-        password: 'hosein123456'
+        email: `${email}`,
+        password: `${pass}`,
     })
-    .then(res => {
-        console.log(res);
-        console.log(res.data);
+    .then(response => {
+        if (response.status === 200) {
+        console.log(response.status)
+        localStorage.setItem('access-token', JSON.stringify(response.data.access));
+        localStorage.setItem('refresh-token', JSON.stringify(response.data.refresh));
+        //console.log(response.data.access);
+        //console.log(token);
+        console.log("hii");
+        window.location = "/";
+        }
     })
     .catch(error => console.log(error));
+    
   }
 
 

@@ -1,33 +1,10 @@
-import React , { useState } from 'react';
+import React  from 'react';
 import { Outlet } from "react-router-dom";
-import jwt_decode from "jwt-decode";
 import { Navbar, Nav, Container, Form, Button } from 'react-bootstrap';
 
 const Layout = () => {
 
-  const [isLoggedin, setIsLoggedin] = useState(false);
 
-  if (localStorage.getItem('access-token') !== null) {
-    const accessToken = JSON.parse(localStorage.getItem('access-token'));
-    //console.log(`token is ${accessToken}`);
-    console.log(`token is avalible-Layout`);
-  
-    try {
-      if (jwt_decode(accessToken).exp < Date.now() / 1000) {
-        console.log(`token is expired-Layout`);
-      }else{
-        console.log('token is valid-Layout');
-        setIsLoggedin(true);
-      } 
-      } catch (e) {
-        console.log(e)
-      }
-      
-  
-    
-  } else {
-    console.log(`token not found`);
-  }
 
 
   return (

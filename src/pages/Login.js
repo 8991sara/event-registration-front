@@ -63,7 +63,7 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(`The name you entered was: ${email} and ${pass}`);
+    ///alert(`The name you entered was: ${email} and ${pass}`);
     axiosBaseURL.post('api/token/', {
         email: `${email}`,
         password: `${pass}`,

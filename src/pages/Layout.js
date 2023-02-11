@@ -23,6 +23,7 @@ const Layout = () => {
             <Nav.Link href="/blogs">Blogs</Nav.Link>
             <Nav.Link href="/Contact">Contact</Nav.Link>
             <Nav.Link href="/Login" >
+            
             Login
             </Nav.Link>
           </Nav>

@@ -2,8 +2,10 @@ import React, { useState , useEffect} from "react";
 import GroovyWalk from "../component/groovyWalk";
 import jwt_decode from "jwt-decode";
 import Login from "./Login";
-
-
+import {useNavigate} from 'react-router-dom';import InsertEvent from "../component/day";
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import '../static/calender.css'
 
 
 
@@ -11,6 +13,18 @@ import Login from "./Login";
 
 
 const Home = () => {
+  const [date, setDate] = useState(new Date());
+
+
+  const navigate = useNavigate();
+
+  const dayPage = () => {
+    // 👇️ navigate programmatically
+    navigate('/day');
+  };
+
+
+  // check token is valid
   if (localStorage.getItem('access-token') !== null) {
     const accessToken = JSON.parse(localStorage.getItem('access-token'));
     //console.log(`token is ${accessToken}`);
@@ -31,10 +45,7 @@ const Home = () => {
         localStorage.clear();
         console.log(e)
         return <Login />;
-      }
-      
-  
-    
+      }    
   } else {
     console.log(`token not found`);
     return <Login />;
@@ -45,21 +56,43 @@ const Home = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 1000);
   }, []);
+
   return (
     <div>
     {loading ? (
       <GroovyWalk />
     ) : (
-    <div>
-      <h1>HOME</h1>
-      <p>Lets use it with React.js</p>
-      <br />
+      <div className='app'>
+      <h1 className='header'>React Calendar</h1>
+      <div>
+       <Calendar onChange={setDate} value={date} onClickDay={dayPage}/>
+      </div>
+   
+      {date.length > 0 ? (
+      <p>
+        <span>Start:</span>
+        {date[0].toDateString()}
+        &nbsp;
+        &nbsp;
+        <span>End:</span>{date[1].toDateString()}
+      </p>
+             ) : (
+      <p>
+         <span>Default selected date:</span>{date.toDateString()}
+        
+         
+      </p> 
+             )
+      }
+   
     </div>
+    
     )}
     </div>
   );
+  
 };
   
   export default Home;

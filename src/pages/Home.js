@@ -64,10 +64,9 @@ const Home = () => {
     {loading ? (
       <GroovyWalk />
     ) : (
-      <div className='app'>
-      <h1 className='header'>React Calendar</h1>
       <div>
-       <Calendar onChange={setDate} value={date} onClickDay={dayPage}/>
+      <div>
+       <Calendar className={'app'} onChange={setDate} value={date} onClickDay={dayPage}/>
       </div>
    
       {date.length > 0 ? (

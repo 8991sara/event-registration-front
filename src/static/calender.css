@@ -48,21 +48,22 @@
   
   
   .react-calendar { 
-    width: 100%;
+    width: 70%;
     max-width: 100%;
-    background-color: rgb(131, 125, 125);
+    background-color: rgb(255, 255, 255);
     color: white;
-    border-radius: 8px;
+    border-radius: 15px;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Ubuntu", "sans-serif";
     line-height: 1.125em;
     position: absolute;
+    margin: 1% 0 0 29%  ;
    }
   
    .react-calendar__navigation button {
     color: white;
     min-width: 44px;
-    background:none;
+    background:#1b19cd;
     font-size: 16px;
     margin-top: 8px;
    }
@@ -96,8 +97,8 @@
   }
   .react-calendar__navigation {
     display: flex;
-    height: 44px;
-    margin-bottom: 1em;
+    height: 80px;
+    margin-bottom: auto;
   }
   .react-calendar__navigation button {
     min-width: 44px;
@@ -113,8 +114,7 @@
   .react-calendar__month-view__weekdays {
     text-align: center;
     text-transform: uppercase;
-    font-weight: bold;
-    font-size: 0.75em;
+    background: #1b19cd;
   }
   .react-calendar__month-view__weekdays__weekday {
     padding: 0.5em;
@@ -129,10 +129,10 @@
   }
   .react-calendar__month-view__days__day--weekend {
     /* color: #d10000; */
-    color: white;
+    color: rgb(206, 7, 7);
   }
   .react-calendar__month-view__days__day--neighboringMonth {
-    color: white;
+    color: rgb(34, 180, 71);
   }
   .react-calendar__year-view .react-calendar__tile,
   .react-calendar__decade-view .react-calendar__tile,
@@ -142,7 +142,7 @@
   .react-calendar__tile {
     max-width: 100%;
     text-align: center;
-    padding: 2.75em 0.5em;
+    padding: 3.8em 0.5em;
     background: none;
   }
   .react-calendar__tile:disabled {
@@ -150,7 +150,7 @@
   }
   .react-calendar__tile:enabled:hover,
   .react-calendar__tile:enabled:focus {
-    background-color: #e6e6e6;
+    background-color: #9b0909;
   }
   .react-calendar__tile--now {
     /* background: #ffff76; */
@@ -177,4 +177,11 @@
   }
   .react-calendar--selectRange .react-calendar__tile--hover {
     background-color: #e6e6e6;
+  }
+  .react-calendar__navigation__next2-button{
+    border-radius: 0px 10px 0 0 ;
+
+  }
+  .react-calendar__navigation__prev2-button{
+    border-radius: 10px 0px 0 0 ;
   }

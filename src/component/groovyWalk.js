@@ -3,7 +3,7 @@ import lottie from "lottie-web";
 
 import duckAnimation from "../static/groovyWalk.json";
 
-const groovyWalk = () => {
+const GroovyWalk = () => {
   const anime = useRef(null);
   useEffect(() => {
     lottie.loadAnimation({
@@ -18,4 +18,4 @@ const groovyWalk = () => {
   return <div style={{ height: 500 }} ref={anime}></div>;
 };
 
-export default groovyWalk;
+export default GroovyWalk;

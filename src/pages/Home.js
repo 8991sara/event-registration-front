@@ -13,14 +13,30 @@ import '../static/calender.css'
 
 
 const Home = () => {
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+
   const [date, setDate] = useState(new Date());
 
 
   const navigate = useNavigate();
 
-  const dayPage = () => {
-    // 👇️ navigate programmatically
-    navigate('/day');
+  const dayPage = (strdate) => {
+    console.log("hiiii",strdate);
+    console.log("hiiii",strdate.toDateString());
+    console.log("hiiii",strdate.toJSON());
+    navigate('/day',{
+      state: {
+        id: 7,
+        color: "green",
+      },
+    });
+
   };
 
 
@@ -51,13 +67,7 @@ const Home = () => {
     return <Login />;
   }
 
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  }, []);
+
 
   return (
     <div>
@@ -66,7 +76,7 @@ const Home = () => {
     ) : (
       <div>
       <div>
-       <Calendar className={'app'} onChange={setDate} value={date} onClickDay={dayPage}/>
+       <Calendar className={'app'} onChange={setDate} value={date} onClickDay={dayPage} />
       </div>
    
       {date.length > 0 ? (

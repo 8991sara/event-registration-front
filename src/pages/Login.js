@@ -20,6 +20,10 @@ import Home from "./Home";
 
 
 function App() {
+  const [justifyActive, setJustifyActive] = useState('tab1');
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+
 
     if (localStorage.getItem('access-token') !== null) {
         const accessToken = JSON.parse(localStorage.getItem('access-token'));
@@ -48,7 +52,6 @@ function App() {
         console.log(`token not found`);
       }
 
-  const [justifyActive, setJustifyActive] = useState('tab1');;
 
   const handleJustifyClick = (value) => {
     if (value === justifyActive) {
@@ -58,8 +61,7 @@ function App() {
     setJustifyActive(value);
   };
 
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
+
 
   const handleSubmit = (event) => {
     event.preventDefault();

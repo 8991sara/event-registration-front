@@ -1,9 +1,9 @@
-.app {
-    /* text-align: center; */
-    margin: 0 auto;
-    width: 50%;
-  }
-  
+.app-parent {
+  /* text-align: center; */
+  display: flex;
+}
+
+
   .selected-date {
     margin: 0 auto;
   }
@@ -48,8 +48,7 @@
   
   
   .react-calendar { 
-    width: 98%;
-    max-width: 100%;
+    width: 100%;
     background-color: rgb(255, 255, 255);
     color: white;
     border-radius: 15px;
@@ -58,6 +57,7 @@
     line-height: 1.125em;
     margin: 1% 1% 1% 1%  ;
     padding: 1%;
+    border: 5px solid #969696;
    }
   
    .react-calendar__navigation button {
@@ -189,3 +189,24 @@
   .react-calendar__navigation__prev2-button{
     border-radius: 10px 0px 0 0 ;
   }
+
+  .detail{
+    width: 100%;
+    border: 10px solid #969696;
+
+
+  }
+  .flex-calender {
+    width:60%;
+} 
+.flex-detail {
+  width:40%;
+  border: 5px solid #969696;
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  font-family: "Ubuntu", "sans-serif";
+  line-height: 1.125em;
+  margin: 1% 1% 1% 1%  ;
+  padding: 1%;
+} 

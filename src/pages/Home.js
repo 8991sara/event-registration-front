@@ -4,7 +4,7 @@ import jwt_decode from "jwt-decode";
 import Login from "./Login";
 import {useNavigate} from 'react-router-dom';import InsertEvent from "../component/day";
 import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+import axiosBaseURL from '../httpCommon';
 import '../static/calender.css'
 
 
@@ -13,6 +13,35 @@ import '../static/calender.css'
 
 
 const Home = () => {
+
+  const [load, setLoad] = useState(true);
+  const [data, setData] = useState([])
+
+
+
+
+  useEffect(() => {
+    const fetchData = async () =>{
+      setLoad(true);
+      try {
+        const {data: response} = await axiosBaseURL.get('api/event/', {
+          headers:{
+            'Authorization': `Bearer ${JSON.parse(localStorage.getItem('access-token'))}`
+          }
+
+        })
+        setData(response);
+        console.log(response)
+      } catch (error) {
+        console.error(error.message);
+      }
+      setLoad(false);
+    }
+
+    fetchData();
+  }, []);
+
+
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
@@ -22,22 +51,17 @@ const Home = () => {
   }, []);
 
   const [date, setDate] = useState(new Date());
-
-
   const navigate = useNavigate();
-
   const dayPage = (strdate) => {
-    console.log("hiiii",strdate);
-    console.log("hiiii",strdate.toDateString());
-    console.log("hiiii",strdate.toJSON());
     navigate('/day',{
       state: {
-        id: 7,
-        color: "green",
+        id: strdate,
       },
     });
 
   };
+
+
 
 
   // check token is valid
@@ -55,6 +79,10 @@ const Home = () => {
         console.log('token is valid2');
         //return <Home />;
         //localStorage.clear();
+        //getCharacters();
+
+
+
       } 
       } catch (e) {
         //window.location = "/login";
@@ -69,33 +97,36 @@ const Home = () => {
 
 
 
+
+
+
+
+
   return (
     <div>
     {loading ? (
       <GroovyWalk />
     ) : (
-      <div>
-      <div>
+    <div  className={'app-parent'}>
+      <div className={'flex-calender'}>
        <Calendar className={'app'} onChange={setDate} value={date} onClickDay={dayPage} />
       </div>
-   
-      {date.length > 0 ? (
-      <p>
-        <span>Start:</span>
-        {date[0].toDateString()}
-        &nbsp;
-        &nbsp;
-        <span>End:</span>{date[1].toDateString()}
+      <div className={'flex-detail'}>
+      <p >
+         <span>Default selected date:</span>{date.toDateString()}  
       </p>
-             ) : (
-      <p>
-         <span>Default selected date:</span>{date.toDateString()}
-        
-         
-      </p> 
-             )
-      }
-   
+      <div >
+      {data.map(item => (<span key={item} >{item.start_time}</span>))}
+      </div>
+      <div >
+      {data.map(item => (<span key={item} >{item.end_time}</span>))}
+      </div>
+      <div >
+      {data.map(item  => (<span key={item} >{item.summery_event}</span>))}
+      </div>
+      
+
+      </div>   
     </div>
     
     )}

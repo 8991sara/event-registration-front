@@ -6,7 +6,9 @@ import {useNavigate} from 'react-router-dom';import InsertEvent from "../compone
 import Calendar from 'react-calendar';
 import axiosBaseURL from '../httpCommon';
 import '../static/calender.css'
-
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 
@@ -108,25 +110,40 @@ const Home = () => {
       <GroovyWalk />
     ) : (
     <div  className={'app-parent'}>
-      <div className={'flex-calender'}>
-       <Calendar className={'app'} onChange={setDate} value={date} onClickDay={dayPage} />
-      </div>
-      <div className={'flex-detail'}>
-      <p >
-         <span>Default selected date:</span>{date.toDateString()}  
-      </p>
-      <div >
-      {data.map(item => (<span key={item} >{item.start_time}</span>))}
-      </div>
-      <div >
-      {data.map(item => (<span key={item} >{item.end_time}</span>))}
-      </div>
-      <div >
-      {data.map(item  => (<span key={item} >{item.summery_event}</span>))}
-      </div>
-      
 
-      </div>   
+
+
+
+
+      <Container fluid >
+        <Row>
+          {/* <Col xs={12} xl={6} style={{ backgroundColor: 'blue' }}> */}
+          <Col xs={12} xl={8} >
+            <Calendar className={'app'} onChange={setDate} value={date} onClickDay={dayPage} />
+          </Col>
+          {/* <Col xs={12} xl={6} style={{ backgroundColor: 'red' }}> */}
+          <Col xs={12} xl={4}    >
+            <div className={'flex-detail'}>
+            <p >
+              <span>Default selected date:</span>{date.toDateString()}  
+              </p>
+              <div >
+              {data.map(item => (<span key={item} >{item.start_time}</span>))}
+              </div>
+              <div >
+              {data.map(item => (<span key={item} >{item.end_time}</span>))}
+              </div>
+              <div >
+              {data.map(item  => (<span key={item} >{item.summery_event}</span>))}
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+
+
+
+
     </div>
     
     )}

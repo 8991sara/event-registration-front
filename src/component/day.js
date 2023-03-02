@@ -1,6 +1,8 @@
 import React, { useState , useEffect} from "react";
 import { useLocation } from "react-router-dom";
 import Calendar from 'react-calendar';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 function InsertEvent(props) {
@@ -16,7 +18,7 @@ function InsertEvent(props) {
  
  return (
  <div>
-  InsertEvent
+  {/* InsertEvent
   <span>Default selected date:</span> {data.state.id.toString()}
   <div>
   {data.state.id.getFullYear()}
@@ -29,7 +31,33 @@ function InsertEvent(props) {
   </div>
   <div>
        {monthName}
-  </div>
+  </div> */}
+
+
+
+
+
+
+
+  <Col xs={12} xl={4}    >
+            <div className={'flex-detail'}>
+            <p >
+              <span>Default selected date:</span>{data.state.id.toDateString()}
+              {/* <span>Default selected date:</span>{data.state()} */}
+              </p>
+              <div >
+                {data.state.id.getDate()}
+              </div>
+              <div >
+                {data.state.id.getMonth()}
+              </div>
+              <div >
+                {data.state.id.getDate()}
+              </div>
+            </div>
+  </Col>
+
+
 
  </div>
 

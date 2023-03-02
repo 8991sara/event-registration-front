@@ -16,6 +16,8 @@ import Col from 'react-bootstrap/Col';
 
 const Home = () => {
 
+
+  const [date, setDate] = useState(new Date());
   const [load, setLoad] = useState(true);
   const [data, setData] = useState([])
 
@@ -49,18 +51,44 @@ const Home = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 1);
   }, []);
 
-  const [date, setDate] = useState(new Date());
-  const navigate = useNavigate();
-  const dayPage = (strdate) => {
-    navigate('/day',{
-      state: {
-        id: strdate,
-      },
-    });
+  
+  // const navigate = useNavigate();
+  // const dayPage = (strdate) => {
+  //   navigate('/day',{
+  //     state: {
+  //       id: strdate,
+  //     },
+  //   });
 
+  // };
+
+
+
+  // const [date, setDate] = useState(new Date());
+  // const navigate = useNavigate();
+  // const dayPage = (strdate) => {
+  //   navigate('/day',{
+  //     state: {
+  //       id: strdate,
+
+  //     },
+  //   });
+
+  // };
+
+	const clickHandler = (event) => {
+		if(event.detail == 2){
+			console.log("Double Clicked")
+		}
+	}
+
+  const dayPage = event => {
+    //setDate()
+    console.log(event.detail);
+    console.log("asas",event)
   };
 
 
@@ -119,13 +147,17 @@ const Home = () => {
         <Row>
           {/* <Col xs={12} xl={6} style={{ backgroundColor: 'blue' }}> */}
           <Col xs={12} xl={8} >
-            <Calendar className={'app'} onChange={setDate} value={date} onClickDay={dayPage} />
+            <div  onClick={clickHandler}>
+            <Calendar className={'app'}    onChange={setDate} value={date} onClickDay={dayPage}/>
+            </div>
+            {/* <Calendar className={'app'}  value={date} onClick={dayPage} /> */}
           </Col>
           {/* <Col xs={12} xl={6} style={{ backgroundColor: 'red' }}> */}
           <Col xs={12} xl={4}    >
             <div className={'flex-detail'}>
             <p >
-              <span>Default selected date:</span>{date.toDateString()}  
+              {/* <span>Default selected date:</span>{date.toDateString()}  */}
+              <span>Default selected date:</span>{date.toDateString()}
               </p>
               <div >
               {data.map(item => (<span key={item} >{item.start_time}</span>))}

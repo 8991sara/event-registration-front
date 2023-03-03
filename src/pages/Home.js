@@ -103,7 +103,23 @@ const Home = () => {
 
   const showEvenetDetails = event => {
     //setDate()
-    console.log(event.detail);
+    const fetchData = async () =>{
+      setLoad(true);
+      try {
+        const {data: response} = await axiosBaseURL.get('api/event/', {
+          headers:{
+            'Authorization': `Bearer ${JSON.parse(localStorage.getItem('access-token'))}`
+          }
+
+        })
+        setData(response);
+        console.log(response)
+      } catch (error) {
+        console.error(error.message);
+      }
+      setLoad(false);
+    }
+    fetchData();
     console.log("asas",event)
   };
 
@@ -169,20 +185,24 @@ const Home = () => {
             {/* <Calendar className={'app'}  value={date} onClick={dayPage} /> */}
           </Col>
           {/* <Col xs={12} xl={6} style={{ backgroundColor: 'red' }}> */}
-          <Col xs={12} xl={4}    >
+          <Col xs={12} xl={4}  >
             <div className={'flex-detail'}>
             <p >
               {/* <span>Default selected date:</span>{date.toDateString()}  */}
               <span>Default selected date:</span>{date.toDateString()}
               </p>
-              <div >
-              {data.map(item => (<span key={item} >{item.start_time}</span>))}
-              </div>
-              <div >
-              {data.map(item => (<span key={item} >{item.end_time}</span>))}
-              </div>
-              <div >
-              {data.map(item  => (<span key={item} >{item.summery_event}</span>))}
+              <div>
+                    <ul className="list-group-item ">
+                      {data.map(item => {
+                        return (
+                        <li key={item.id}>
+                              <p key={item.id} className="list-group-item-text">summery: {item.summery_event}</p>
+                              <p key={item.id} className="list-group-item-text">start: {item.start_time}</p>
+                              <p key={item.id} className="list-group-item-text">end: {item.end_time}</p>
+                        </li>
+                        )
+                      })}
+                    </ul>
               </div>
             </div>
           </Col>

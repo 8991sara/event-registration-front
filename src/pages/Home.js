@@ -20,6 +20,7 @@ const Home = () => {
   const [date, setDate] = useState(new Date());
   const [load, setLoad] = useState(true);
   const [data, setData] = useState([])
+  const navigate = useNavigate();
 
 
 
@@ -69,10 +70,14 @@ const Home = () => {
 
   // const [date, setDate] = useState(new Date());
   // const navigate = useNavigate();
-  // const dayPage = (strdate) => {
+  // const clickHandler = (event) => {
+  //   console.log("aaaaaaaaaaaaaa",event);
+  //   console.log(event.currentTarget.getAttribute("getMonth"));
+  //   console.log(event.currentTarget.getAttribute("getDay"));
+  //   console.log(event.currentTarget.getAttribute("fullDate"));
   //   navigate('/day',{
   //     state: {
-  //       id: strdate,
+  //       id: event,
 
   //     },
   //   });
@@ -81,11 +86,22 @@ const Home = () => {
 
 	const clickHandler = (event) => {
 		if(event.detail == 2){
-			console.log("Double Clicked")
+      console.log("Double Clicked")
+      console.log(event.currentTarget.getAttribute("data-value"));
+      console.log("pppppppppppppppppp",event)
+      // const navigate = useNavigate();
+          navigate('/day',{
+            state: {
+              month: event.currentTarget.getAttribute("getMonth"),
+              day: event.currentTarget.getAttribute("getDay"),
+              fulldate: event.currentTarget.getAttribute("fullDate"),
+            },
+          });
+
 		}
 	}
 
-  const dayPage = event => {
+  const showEvenetDetails = event => {
     //setDate()
     console.log(event.detail);
     console.log("asas",event)
@@ -147,8 +163,8 @@ const Home = () => {
         <Row>
           {/* <Col xs={12} xl={6} style={{ backgroundColor: 'blue' }}> */}
           <Col xs={12} xl={8} >
-            <div  onClick={clickHandler}>
-            <Calendar className={'app'}    onChange={setDate} value={date} onClickDay={dayPage}/>
+            <div  getMonth={date.getMonth()} getDay={date.getDate()} fullDate={date} onClick={clickHandler}>
+            <Calendar className={'app'}    onChange={setDate} value={date} onClickDay={showEvenetDetails}/>
             </div>
             {/* <Calendar className={'app'}  value={date} onClick={dayPage} /> */}
           </Col>

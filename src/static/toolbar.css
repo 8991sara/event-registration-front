@@ -19,3 +19,8 @@
   padding: 5% 5% 5% 5% ;
 
 } 
+
+.btnd {
+  box-shadow: none;
+  padding: 5px;
+}

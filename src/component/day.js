@@ -27,12 +27,14 @@ function InsertEvent(props) {
           {/* <Col xs={12} xl={6} style={{ backgroundColor: 'blue' }}> */}
           <Col xs={12} xl={12} >
             <div className={'toolbar'}>
-            <a className="btn  btn-floating m-1"t arget="_blank" rel="noopener noreferrer"  href="https://twitter.com/hoseinmontazerr" role="button">
-                <BsPencilSquare color="#FFF4F1" size={35}/>
+
+            <a className="btnd" target="_blank" rel="noopener noreferrer"  href="https://twitter.com/hoseinmontazerr" role="button">
+                <BsCalendarPlus color="#FFF4F1" size={30}/>
             </a>
-            <a className="btn  btn-floating m-1"t arget="_blank" rel="noopener noreferrer"  href="https://twitter.com/hoseinmontazerr" role="button">
-                <BsCalendarPlus color="#FFF4F1" size={35}/>
+            <a className="btnd" target="_blank" rel="noopener noreferrer"  href="https://twitter.com/hoseinmontazerr" role="button">
+                <BsPencilSquare color="#FFF4F1"  size={30}/>
             </a>
+
             </div>
           </Col>
           {/* <Col xs={12} xl={6} style={{ backgroundColor: 'red' }}> */}

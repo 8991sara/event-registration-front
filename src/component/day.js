@@ -1,9 +1,10 @@
 import React, { useState , useEffect} from "react";
 import { useLocation } from "react-router-dom";
-import Calendar from 'react-calendar';
+import '../static/toolbar.css'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { BsPencilSquare, BsCalendarPlus,FaGithub,FaLinkedinIn,FaTelegram } from "react-icons/bs";
 
 
 function InsertEvent(props) {
@@ -19,52 +20,24 @@ function InsertEvent(props) {
  
  return (
  <div>
-  {/* InsertEvent
-  <span>Default selected date:</span> {data.state.id.toString()}
-  <div>
-  {data.state.id.getFullYear()}
-  </div>
-  <div>
-  {data.state.id.getMonth()}
-  </div>
-  <div>
-  {data.state.id.getDate()}
-  </div>
-  <div>
-       {monthName}
-  </div> */}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
       <Container fluid >
         <Row>
           {/* <Col xs={12} xl={6} style={{ backgroundColor: 'blue' }}> */}
           <Col xs={12} xl={12} >
-              edit
+            <div className={'toolbar'}>
+            <a className="btn  btn-floating m-1"t arget="_blank" rel="noopener noreferrer"  href="https://twitter.com/hoseinmontazerr" role="button">
+                <BsPencilSquare color="#FFF4F1" size={35}/>
+            </a>
+            <a className="btn  btn-floating m-1"t arget="_blank" rel="noopener noreferrer"  href="https://twitter.com/hoseinmontazerr" role="button">
+                <BsCalendarPlus color="#FFF4F1" size={35}/>
+            </a>
+            </div>
           </Col>
           {/* <Col xs={12} xl={6} style={{ backgroundColor: 'red' }}> */}
           <Col xs={12} xl={12}    >
-            <div className={'flex-detail'}>
+            <div className={'detial-event'}>
             <p >
               {/* <span>Default selected date:</span>{data.state.id.toDateString()} */}
               {/* <span>Default selected date:</span>{data.state()} */}

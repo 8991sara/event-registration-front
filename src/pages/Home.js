@@ -20,6 +20,7 @@ const Home = () => {
   const [date, setDate] = useState(new Date());
   const [load, setLoad] = useState(true);
   const [data, setData] = useState([])
+  const [error, setError] = useState(false)
   const navigate = useNavigate();
 
 
@@ -29,16 +30,21 @@ const Home = () => {
     const fetchData = async () =>{
       setLoad(true);
       try {
+        let pubDate= date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate()
+        console.log("pubDate----> ",pubDate)
         const {data: response} = await axiosBaseURL.get('api/event/', {
           headers:{
-            'Authorization': `Bearer ${JSON.parse(localStorage.getItem('access-token'))}`
+            'Authorization': `Bearer ${JSON.parse(localStorage.getItem('access-token'))}`,
+            'pubDate': pubDate
           }
 
         })
         setData(response);
-        console.log(response)
-      } catch (error) {
-        console.error(error.message);
+        setError(true)
+        console.log("aaaaaaa",response)
+      } catch (err) {
+        setError(false)
+        console.error("bbbbbbbbbbbbbb",err.message);
       }
       setLoad(false);
     }
@@ -55,40 +61,12 @@ const Home = () => {
     }, 1);
   }, []);
 
-  
-  // const navigate = useNavigate();
-  // const dayPage = (strdate) => {
-  //   navigate('/day',{
-  //     state: {
-  //       id: strdate,
-  //     },
-  //   });
-
-  // };
-
-
-
-  // const [date, setDate] = useState(new Date());
-  // const navigate = useNavigate();
-  // const clickHandler = (event) => {
-  //   console.log("aaaaaaaaaaaaaa",event);
-  //   console.log(event.currentTarget.getAttribute("getMonth"));
-  //   console.log(event.currentTarget.getAttribute("getDay"));
-  //   console.log(event.currentTarget.getAttribute("fullDate"));
-  //   navigate('/day',{
-  //     state: {
-  //       id: event,
-
-  //     },
-  //   });
-
-  // };
 
 	const clickHandler = (event) => {
 		if(event.detail == 2){
-      console.log("Double Clicked")
-      console.log(event.currentTarget.getAttribute("data-value"));
-      console.log("pppppppppppppppppp",event)
+      //console.log("Double Clicked")
+      //console.log(event.currentTarget.getAttribute("data-value"));
+      //console.log("pppppppppppppppppp",event)
       // const navigate = useNavigate();
           navigate('/day',{
             state: {
@@ -106,16 +84,21 @@ const Home = () => {
     const fetchData = async () =>{
       setLoad(true);
       try {
+        let pubDate= date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate()
+        console.log("pubDate----> ",pubDate)
         const {data: response} = await axiosBaseURL.get('api/event/', {
           headers:{
-            'Authorization': `Bearer ${JSON.parse(localStorage.getItem('access-token'))}`
+            'Authorization': `Bearer ${JSON.parse(localStorage.getItem('access-token'))}`,
+            'pubDate': pubDate
           }
 
         })
         setData(response);
-        console.log(response)
-      } catch (error) {
-        console.error(error.message);
+        setError(true)
+        console.log("showevent",response)
+      } catch (err) {
+        setError(false)
+        //console.error(error.message);
       }
       setLoad(false);
     }
@@ -130,15 +113,15 @@ const Home = () => {
   if (localStorage.getItem('access-token') !== null) {
     const accessToken = JSON.parse(localStorage.getItem('access-token'));
     //console.log(`token is ${accessToken}`);
-    console.log(`token is avalible1`);
+    //console.log(`token is avalible1`);
   
     try {
       if (jwt_decode(accessToken).exp < Date.now() / 1000) {
-        console.log(`token is expired`);
+        //console.log(`token is expired`);
         localStorage.clear();
         return <Login />;
       }else{
-        console.log('token is valid2');
+        //console.log('token is valid2');
         //return <Home />;
         //localStorage.clear();
         //getCharacters();
@@ -160,8 +143,35 @@ const Home = () => {
 
 
 
+  const getErrorView = () => {
+    return (
+      <div>
+        Oh no! Something went wrong. 
+        <p style={{ color: "red" }}>{data.message}</p>
+        <p style={{ color: "red" }}>Try again</p>
+      </div>
+    )
+  }
+
+  const getListItems = () => {
 
 
+    return(
+
+      <ul>
+        <span>Default selected date:</span>{date.toDateString()}
+        {data.map(item => {
+          return (
+          <li>
+          <p  className="list-group-item-text">summery: {item.summery_event}</p>
+          <p  className="list-group-item-text">start: {item.start_time}</p>
+          <p  className="list-group-item-text">end: {item.end_time}</p>
+          </li>
+          )
+        })}
+      </ul>
+      )
+  }
 
 
   return (
@@ -171,38 +181,27 @@ const Home = () => {
     ) : (
     <div  className={'app-parent'}>
 
-
-
-
-
       <Container fluid >
         <Row>
-          {/* <Col xs={12} xl={6} style={{ backgroundColor: 'blue' }}> */}
           <Col xs={12} xl={8} >
-            <div  getMonth={date.getMonth()} getDay={date.getDate()} fullDate={date} onClick={clickHandler}>
+            <div  getMonth={date.getMonth()} getDay={date.getDate()} fullDate={date.getFullYear()}   onClick={clickHandler}>
             <Calendar className={'app'}    onChange={setDate} value={date} onClickDay={showEvenetDetails}/>
             </div>
-            {/* <Calendar className={'app'}  value={date} onClick={dayPage} /> */}
           </Col>
-          {/* <Col xs={12} xl={6} style={{ backgroundColor: 'red' }}> */}
           <Col xs={12} xl={4}  >
             <div className={'flex-detail'}>
             <p >
-              {/* <span>Default selected date:</span>{date.toDateString()}  */}
-              <span>Default selected date:</span>{date.toDateString()}
+              {/* <span>Default selected date:</span>{date.toDateString()} */}
               </p>
               <div>
-                    <ul className="list-group-item ">
-                      {data.map(item => {
-                        return (
-                        <li key={item.id}>
-                              <p key={item.id} className="list-group-item-text">summery: {item.summery_event}</p>
-                              <p key={item.id} className="list-group-item-text">start: {item.start_time}</p>
-                              <p key={item.id} className="list-group-item-text">end: {item.end_time}</p>
-                        </li>
-                        )
-                      })}
+                    <ul>
+
+
+                      {  error ?
+                        getListItems() : getErrorView()
+                      }
                     </ul>
+                    
               </div>
             </div>
           </Col>

@@ -9,15 +9,15 @@ const Layout = () => {
 
   return (
     <>
-    <Navbar bg="dark" variant="dark" expand="lg">
+    <Navbar  bg="light" variant="light" expand="lg" >
       <Container fluid>
         <Navbar.Brand href="/">Event</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
+        <Navbar.Toggle aria-controls="navbarScroll"/>
+        <Navbar.Collapse id="navbarScroll" >
           <Nav
             className="me-auto my-2 my-lg-0"
             style={{ maxHeight: '100px' }}
-            navbarScroll
+            navbarScroll 
           >
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/blogs">Blogs</Nav.Link>

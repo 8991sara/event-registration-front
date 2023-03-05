@@ -197,10 +197,10 @@ function InsertEvent(props) {
               <Modal.Body>
                 <MDBInput wrapperClass='mb-4' label='Summery' id='form1' type='text'/>
                 <div>
-                  <DatePicker  showIcon  dateFormat="yyyy/MM/dd"  selected={startDate} onChange={(startdate) => setStartDate(startdate)} />
+                  <DatePicker  showIcon  timeInputLabel="Time:" dateFormat="MM/dd/yyyy h:mm aa" showTimeInput selected={startDate} onChange={(startdate) => setStartDate(startdate)} />
                 </div>
                 <div>
-                  <DatePicker showIcon  dateFormat="yyyy/MM/dd"  selected={stopDate} onChange={(stopdate) => setStoptDate(stopdate)}   />
+                  <DatePicker showIcon   timeInputLabel="Time:" dateFormat="MM/dd/yyyy h:mm aa" showTimeInput selected={stopDate} onChange={(stopdate) => setStoptDate(stopdate)}   />
                 </div>
               </Modal.Body>
               <Modal.Footer>

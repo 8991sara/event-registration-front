@@ -9,6 +9,16 @@ import Login from "./Login";
 
 const Blogs = () => {
 
+
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1);
+  }, []);
+  
+
   if (localStorage.getItem('access-token') !== null) {
     const accessToken = JSON.parse(localStorage.getItem('access-token'));
     //console.log(`token is ${accessToken}`);
@@ -41,26 +51,31 @@ const Blogs = () => {
 
 
 
-    const [loading, setLoading] = useState(false);
-    useEffect(() => {
-      setLoading(true);
-      setTimeout(() => {
-        setLoading(false);
-      }, 3000);
-    }, []);
+
     return (
-      <div className="container">
+      <div>
       {loading ? (
         <GroovyWalk />
       ) : (
-      <div>
+      <div  className={'app-parent'}>
+  
+            <div>
         <h1>Lottie animations.</h1>
         <p>Lets use it with React.js</p>
         <br />
       </div>
+
+
+  
+  
+  
+      </div>
+      
       )}
       </div>
     );
+
+
   };
   
   export default Blogs;

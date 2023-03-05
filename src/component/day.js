@@ -5,7 +5,7 @@ import '../static/toolbar.css'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { BsPencilSquare, BsCalendarPlus,FaGithub,FaLinkedinIn,FaTelegram } from "react-icons/bs";
+import { BsPencilSquare, BsCalendarPlus } from "react-icons/bs";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
@@ -18,10 +18,15 @@ function InsertEvent(props) {
   const [error, setError] = useState(false)
 
 
-  const [show, setShow] = useState(false);
+  const [showInsert, setShowInsert] = useState(false);
+  
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleCloseIsert = () => setShowInsert(false);
+  const handleShowInsert = () => setShowInsert(true);
+
+  const handleCloseEdit= () => setShowEdit(false);
+  const [showEdit, setShowEdit] = useState(false);
+  const handleShowEdit = () => setShowEdit(true);
   
 
 
@@ -115,30 +120,46 @@ function InsertEvent(props) {
           <Col xs={12} xl={12} >
             <div className={'toolbar'}>
 
-            <a className="btnd" target="_blank" rel="noopener noreferrer"  onClick={handleShow} role="button">
+            <a className="btnd" target="_blank" rel="noopener noreferrer"  onClick={handleShowInsert} role="button">
                 <BsCalendarPlus color="#FFF4F1" size={30}/>
             </a>
-            <a className="btnd" target="_blank" rel="noopener noreferrer"  onClick={handleShow} role="button">
+            <a className="btnd" target="_blank" rel="noopener noreferrer"  onClick={handleShowEdit} role="button">
                 <BsPencilSquare color="#FFF4F1"  size={30}/>
             </a>
-            <Button variant="primary" onClick={handleShow}>
-              Launch demo modal
-            </Button>
 
-            <Modal show={show} onHide={handleClose}>
+
+
+
+            <Modal show={showInsert} onHide={handleCloseIsert}>
               <Modal.Header closeButton>
                 <Modal.Title>Modal heading</Modal.Title>
               </Modal.Header>
               <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
               <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
+                <Button variant="secondary" onClick={handleCloseIsert}>
                   Close
                 </Button>
-                <Button variant="primary" onClick={handleClose}>
+                <Button variant="primary" onClick={handleCloseIsert}>
                   Save Changes
                 </Button>
               </Modal.Footer>
-      </Modal>
+            </Modal>
+
+
+            <Modal show={showEdit} onHide={handleCloseEdit}>
+              <Modal.Header closeButton>
+                <Modal.Title>Modalaaaaaaaaaa heading</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleCloseEdit}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={handleCloseEdit}>
+                  Save Changes
+                </Button>
+              </Modal.Footer>
+            </Modal>
 
             </div>
           </Col>

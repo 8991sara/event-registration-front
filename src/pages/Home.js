@@ -63,7 +63,7 @@ const Home = () => {
 
 
 	const clickHandler = (event) => {
-		if(event.detail == 2){
+		if(event.detail === 2){
       //console.log("Double Clicked")
       //console.log(event.currentTarget.getAttribute("data-value"));
       //console.log("pppppppppppppppppp",event)

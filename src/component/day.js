@@ -25,7 +25,7 @@ function InsertEvent(props) {
   const [data, setData] = useState([])
   const [error, setError] = useState(false)
   const [startDate, setStartDate] = useState(new Date());
-  const [stoptDate, setStoptDate] = useState(new Date());
+  const [stopDate, setStoptDate] = useState(new Date());
 
   const [showInsert, setShowInsert] = useState(false);
   
@@ -92,7 +92,11 @@ function InsertEvent(props) {
 
 
 	const saveData = (event) => {
-      console.log("Double Clicked")
+    console.log("Double Clicked")
+    let summery= event.currentTarget.getAttribute("summery")
+    let startdate= event.currentTarget.getAttribute("startdate")
+    let stopdate= event.currentTarget.getAttribute("stopdate")
+    console.log(summery,startdate,stopdate)
 
 	}
 
@@ -191,15 +195,19 @@ function InsertEvent(props) {
 
               </Modal.Header>
               <Modal.Body>
-                <MDBInput wrapperClass='mb-4' label='Name' id='form1' type='text'/>
-                <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-                <DatePicker selected={startDate} onChange={(date) => setStoptDate(date)}   />
+                <MDBInput wrapperClass='mb-4' label='Summery' id='form1' type='text'/>
+                <div>
+                  <DatePicker  showIcon selected={startDate} onChange={(startdate) => setStartDate(startdate)} />
+                </div>
+                <div>
+                  <DatePicker showIcon selected={stopDate} onChange={(stopdate) => setStoptDate(stopdate)}   />
+                </div>
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleCloseEdit}>
                   Close
                 </Button>
-                <Button variant="primary" onClick={saveData}>
+                <Button variant="primary"  summery="hiiii" startdate={startDate} stopdate={stopDate} onClick={saveData}>
                   Save Changes
                 </Button>
               </Modal.Footer>

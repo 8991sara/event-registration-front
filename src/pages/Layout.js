@@ -1,6 +1,7 @@
 import React  from 'react';
 import { Outlet } from "react-router-dom";
 import { Navbar, Nav, Container, Form, Button } from 'react-bootstrap';
+import menuToggle from "../static/img/icons8-circled-menu-50.png"
 
 const Layout = () => {
 
@@ -13,9 +14,9 @@ const Layout = () => {
       <Container fluid>
         <Navbar.Brand href="/">Event</Navbar.Brand>
         <Navbar.Toggle style={{ 
-            backgroundImage: "url(" + "https://www.nicesnippets.com/image/imgpsh_fullsize.png" + ")",
+            backgroundImage: `url(${menuToggle})`,
             backgroundPosition: 'center',
-            backgroundSize: 'cover',
+            backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat'
           }} aria-controls="navbarScroll"/>
         <Navbar.Collapse id="navbarScroll" >

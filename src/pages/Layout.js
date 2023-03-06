@@ -2,6 +2,7 @@ import React  from 'react';
 import { Outlet } from "react-router-dom";
 import { Navbar, Nav, Container, Form, Button } from 'react-bootstrap';
 import menuToggle from "../static/img/icons8-circled-menu-50.png"
+import logo from "../static/img/logo.png"
 
 const Layout = () => {
 
@@ -12,7 +13,13 @@ const Layout = () => {
     <>
     <Navbar  bg="light" variant="light" expand="lg" >
       <Container fluid>
-        <Navbar.Brand href="/">Event</Navbar.Brand>
+        <Navbar.Brand href="/" >
+              <img
+                src={logo}
+                width="60"
+                height="40"
+              />
+        </Navbar.Brand>
         <Navbar.Toggle style={{ 
             backgroundImage: `url(${menuToggle})`,
             backgroundPosition: 'center',

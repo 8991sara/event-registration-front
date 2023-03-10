@@ -159,7 +159,7 @@ const Home = () => {
 
 
     return(
-      <Container fluid >
+      <Container fluid  style={{padding: '10px 10px 10px 10px'}} >
         <Row>
       <ul>
       <Col  >
@@ -171,7 +171,7 @@ const Home = () => {
       <Col  >
         {data.map(item => {
           return (
-          <li className="list-group-item ">
+          <div className="list-group-day">
           <div className="three">
             <h1> Summery </h1>
             <p>{item.summery_event}</p>
@@ -184,7 +184,7 @@ const Home = () => {
             <h1> Stop Date </h1>
             <p>{item.end_time}</p>
           </div> 
-          </li>
+          </div>
           )
         })}
         </Col>

@@ -7,7 +7,7 @@ import '../static/toolbar.css'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { BsPencilSquare, BsCalendarPlus , BsFillTrashFill} from "react-icons/bs";
+import { BsPencilSquare, BsCalendarPlus , BsFillTrashFill, BsShareFill} from "react-icons/bs";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -201,51 +201,19 @@ function InsertEvent(props) {
   const getListItems = () => {
 
 
-    // return(
-
-    //   <ul className="list-group">
-    //     {/* <span>Default selected date:</span>{date.toDateString()} */}
-    //     {data.map(item => {
-    //       return (
-    //       <li className="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-    //             <div className="flex-column">
-    //                 <p  className="fw-bold">summery: {item.summery_event}</p>
-    //                 <div class="ms-3">
-    //                 <p  className="list-group-item-text">start: {item.start_time}</p>
-    //                 <p  className="list-group-item-text">end: {item.end_time}</p>
-    //                 </div>
-    //               </div>
-
-    //       <a className="btnd" target="_blank" rel="noopener noreferrer"  onClick={handleShowEdit} role="button">
-    //             <BsPencilSquare color="black"  size={20}/>
-    //         </a>
-    //         <span class="badge rounded-pill badge-success">Active</span>
-
-    //       </li>
-          
-
-          
-    //       )
-    //     })}
-    //   </ul>
-    //   )
-
-
 
       return(
-        <Container fluid >
+
+        <Container fluid style={{padding: '10px 10px 10px 10px'}} >
+        <h1>
+          {date.state.fulldate}/{date.state.month}/{date.state.day}
+        </h1>
           <Row>
-          <ol class="list-group list-group-numbered">      
-          <Col  >
-        <div >
-          <h1>  </h1>
-        </div>
-  
-        </Col>
+          <div >      
         <Col  >
           {data.map(item => {
             return (
-            <li className="list-group-item ">
+            <div className="list-group-day">
             <div className="three  ">
               <h1> Summery </h1>
               <p>{item.summery_event}</p>
@@ -265,11 +233,14 @@ function InsertEvent(props) {
             <a className="btnd" target="_blank" rel="noopener noreferrer"  onClick={handleShowEdit} role="button">
                  <BsFillTrashFill color="black"  size={20}/>
             </a>
-            </li>
+            <a className="btnd" target="_blank" rel="noopener noreferrer"  onClick={handleShowEdit} role="button">
+                 <BsShareFill color="black"  size={20}/>
+            </a>
+            </div>
             )
           })}
           </Col>
-        </ol>
+        </div>
         </Row>
         </Container>
         )
@@ -298,10 +269,11 @@ function InsertEvent(props) {
             <a className="btnd" target="_blank" rel="noopener noreferrer"  onClick={handleShowInsert} role="button">
                 <BsCalendarPlus color="#FFF4F1" size={30}/>
             </a>
+            
             </OverlayTrigger>
- 
-
-
+            <a className="btnd" target="_blank" rel="noopener noreferrer"  onClick={handleShowEdit} role="button">
+                 <BsShareFill color="white"  size={30}/>
+            </a>
 
 
             <Modal show={showInsert} onHide={handleCloseIsert}>
@@ -358,17 +330,14 @@ function InsertEvent(props) {
           
           {/* <Col xs={12} xl={6} style={{ backgroundColor: 'red' }}> */}
           <Col xs={12} xl={12}    >
-            <div className={'detial-event'}>
+            <div className="list-day">
+            {/* <div> */}
               <div>
-                hiiiiiiiiiii
-              </div>
-              <div>
-
-                    <ul>
+                  
                       {  error ?
                         getListItems() : getErrorView()
                       }
-                    </ul>
+                    
                     
               </div>
               </div>

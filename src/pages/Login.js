@@ -87,16 +87,16 @@ function App() {
 
 
   return (
-    <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
+    <MDBContainer className="p-3 my-5 d-flex flex-column w-75">
 
       <MDBTabs pills justify className='mb-3 d-flex flex-row justify-content-between'>
         <MDBTabsItem>
-          <MDBTabsLink onClick={() => handleJustifyClick('tab1')} active={justifyActive === 'tab1'}>
+          <MDBTabsLink  style={{backgroundColor:"#3D444C" , color:'white'}} onClick={() => handleJustifyClick('tab1')} active={justifyActive === 'tab1'}>
             Login
           </MDBTabsLink>
         </MDBTabsItem>
         <MDBTabsItem>
-          <MDBTabsLink onClick={() => handleJustifyClick('tab2')} active={justifyActive === 'tab2'}>
+          <MDBTabsLink  style={{backgroundColor:"#3D444C" , color:'white'}} onClick={() => handleJustifyClick('tab2')} active={justifyActive === 'tab2'}>
             Register
           </MDBTabsLink>
         </MDBTabsItem>
@@ -111,19 +111,19 @@ function App() {
 
             <div className='d-flex justify-content-between mx-auto' style={{width: '40%'}}>
               <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-                <MDBIcon fab icon='facebook-f' size="sm"/>
+                <MDBIcon fab icon='facebook-f' size="lg"/>
               </MDBBtn>
 
               <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-                <MDBIcon fab icon='twitter' size="sm"/>
+                <MDBIcon fab icon='twitter' size="lg"/>
               </MDBBtn>
 
               <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-                <MDBIcon fab icon='google' size="sm"/>
+                <MDBIcon fab icon='google' size="lg"/>
               </MDBBtn>
 
               <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-                <MDBIcon fab icon='github' size="sm"/>
+                <MDBIcon fab icon='github' size="lg"/>
               </MDBBtn>
             </div>
 
@@ -138,7 +138,7 @@ function App() {
                 <a href="!#">Forgot password?</a>
             </div>
 
-            <MDBBtn type="submit"  className="mb-4 w-100">Sign in</MDBBtn>
+            <MDBBtn type="submit"  className="mb-4 w-100" style={{backgroundColor:"#3D444C"}} >Sign in</MDBBtn>
           </form>
           <p className="text-center">Not a member? <a href="#!">Register</a></p>
 
@@ -151,19 +151,19 @@ function App() {
 
             <div className='d-flex justify-content-between mx-auto' style={{width: '40%'}}>
               <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-                <MDBIcon fab icon='facebook-f' size="sm"/>
+                <MDBIcon fab icon='facebook-f' size="lg"/>
               </MDBBtn>
 
               <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-                <MDBIcon fab icon='twitter' size="sm"/>
+                <MDBIcon fab icon='twitter' size="lg"/>
               </MDBBtn>
 
               <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-                <MDBIcon fab icon='google' size="sm"/>
+                <MDBIcon fab icon='google' size="lg"/>
               </MDBBtn>
 
               <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-                <MDBIcon fab icon='github' size="sm"/>
+                <MDBIcon fab icon='github' size="lg"/>
               </MDBBtn>
             </div>
 
@@ -179,7 +179,7 @@ function App() {
             <MDBCheckbox name='flexCheck' id='flexCheckDefault' label='I have read and agree to the terms' />
           </div>
 
-          <MDBBtn className="mb-4 w-100">Sign up</MDBBtn>
+          <MDBBtn className="mb-4 w-100" style={{backgroundColor:"#3D444C"}}>Sign up</MDBBtn>
 
         </MDBTabsPane>
 

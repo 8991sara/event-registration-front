@@ -1,8 +1,8 @@
 import React  from 'react';
 import { Outlet } from "react-router-dom";
 import { Navbar, Nav, Container, Form, Button } from 'react-bootstrap';
-import menuToggle from "../static/img/icons8-circled-menu-50.png"
-import logo from "../static/img/logo-bk.svg"
+import menuToggle from "../static/img/icons8-circled-menu-50-white.png"
+import logo from "../static/img/default-monochrome.svg"
 
 const Layout = () => {
 
@@ -11,7 +11,7 @@ const Layout = () => {
 
   return (
     <>
-    <Navbar  bg="light" variant="light" expand="lg" >
+    <Navbar    expand="lg"  style={{backgroundColor:"#3D444C"}} >
       <Container fluid>
         <Navbar.Brand href="/" >
               <img
@@ -32,10 +32,10 @@ const Layout = () => {
             style={{ maxHeight: '100px' }}
             navbarScroll 
           >
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/blogs">Blogs</Nav.Link>
-            <Nav.Link href="/Contact">Contact</Nav.Link>
-            <Nav.Link href="/Login" >
+            <Nav.Link  style={{ color: 'white'}} href="/">Home</Nav.Link>
+            <Nav.Link  style={{ color: 'white'}} href="/blogs">Blogs</Nav.Link>
+            <Nav.Link  style={{ color: 'white'}} href="/Contact">Contact</Nav.Link>
+            <Nav.Link  style={{ color: 'white'}}href="/Login" >
             
             Login
             </Nav.Link>

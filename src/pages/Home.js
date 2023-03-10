@@ -80,11 +80,13 @@ const Home = () => {
 	}
 
   const showEvenetDetails = event => {
+    console.log("month -------->" ,date.getMonth()+1 )
+    let month = date.getMonth()+1
     //setDate()
     const fetchData = async () =>{
       setLoad(true);
       try {
-        let pubDate= date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate()
+        let pubDate= date.getFullYear()+"-"+month+"-"+date.getDate()
         console.log("pubDate----> ",pubDate)
         const {data: response} = await axiosBaseURL.get('api/event/', {
           headers:{
@@ -162,7 +164,7 @@ const Home = () => {
         <span>Default selected date:</span>{date.toDateString()}
         {data.map(item => {
           return (
-          <li>
+          <li className="list-group-item list-group-item-action">
           <p  className="list-group-item-text">summery: {item.summery_event}</p>
           <p  className="list-group-item-text">start: {item.start_time}</p>
           <p  className="list-group-item-text">end: {item.end_time}</p>

@@ -57,13 +57,13 @@
     line-height: 1.125em;
     margin: 1% 0% 0% 0%  ;
     padding: 0%;
-    border: 5px solid #969696;
+    border: 3px solid #5B6751;
    }
   
    .react-calendar__navigation button {
     color: white;
     min-width: 44px;
-    background:#1b19cd;
+    background:#463254;
     font-size: 16px;
     margin-top: 8px;
    }
@@ -89,7 +89,7 @@
   }
   .react-calendar button {
     margin: 0;
-    border: 2px solid #23232324;
+    border: 1px solid #4d4b4b24;
     outline: none;
   }
   .react-calendar button:enabled:hover {
@@ -114,7 +114,7 @@
   .react-calendar__month-view__weekdays {
     text-align: center;
     text-transform: uppercase;
-    background: #1b19cd;
+    background: #546F40;
   }
   .react-calendar__month-view__weekdays__weekday {
     padding: 0.5em;
@@ -154,7 +154,7 @@
   }
   .react-calendar__tile:enabled:hover,
   .react-calendar__tile:enabled:focus {
-    background-color: #9b0909;
+    background-color: #3F3910;
   }
   .react-calendar__tile--now {
     /* background: #ffff76; */
@@ -192,7 +192,7 @@
 
   .detail{
     width: 100%;
-    border: 10px solid #969696;
+    border: 10px solid #5B6751;
 
 
   }
@@ -200,13 +200,69 @@
     width:60%;
 } 
 .flex-detail {
-  border: 5px solid #969696;
+  border: 3px solid #5B6751;
   background-color: rgb(255, 255, 255);
-  border-radius: 15px;
+  border-radius: 10px;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
   font-family: "Ubuntu", "sans-serif";
   line-height: 1.125em;
-  padding: 5% 5% 5% 5% ;
-	margin-top: 2% !important;
+  padding: 0% ;
+	margin: 2% 0% 1% 0% !important;
 
+}
+
+
+
+
+
+
+h1 {
+  position: relative;
+  padding: 10px;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  font-size: 40px;
+  color: #680000;
+  -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+h1 span {
+  display: block;
+  font-size: 0.5em;
+  line-height: 1.3;
+}
+h1 em {
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* === HEADING STYLE #3 === */
+.three h1 {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.5em;
+  padding-bottom: 10px;
+  position: relative;
+}
+.three h1:before {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 5px;
+  width: 110px;
+  background-color: #8A0404;
+}
+.three h1:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  height: 1px;
+  width: 95%;
+  max-width: 255px;
+  background-color: #3A6A97;
 }

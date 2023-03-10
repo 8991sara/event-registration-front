@@ -7,7 +7,7 @@ import '../static/toolbar.css'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { BsPencilSquare, BsCalendarPlus } from "react-icons/bs";
+import { BsPencilSquare, BsCalendarPlus , BsFillTrashFill} from "react-icons/bs";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -201,34 +201,80 @@ function InsertEvent(props) {
   const getListItems = () => {
 
 
-    return(
+    // return(
 
-      <ul className="list-group">
-        {/* <span>Default selected date:</span>{date.toDateString()} */}
-        {data.map(item => {
-          return (
-          <li className="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                <div className="flex-column">
-                    <p  className="fw-bold">summery: {item.summery_event}</p>
-                    <div class="ms-3">
-                    <p  className="list-group-item-text">start: {item.start_time}</p>
-                    <p  className="list-group-item-text">end: {item.end_time}</p>
-                    </div>
-                  </div>
+    //   <ul className="list-group">
+    //     {/* <span>Default selected date:</span>{date.toDateString()} */}
+    //     {data.map(item => {
+    //       return (
+    //       <li className="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+    //             <div className="flex-column">
+    //                 <p  className="fw-bold">summery: {item.summery_event}</p>
+    //                 <div class="ms-3">
+    //                 <p  className="list-group-item-text">start: {item.start_time}</p>
+    //                 <p  className="list-group-item-text">end: {item.end_time}</p>
+    //                 </div>
+    //               </div>
 
-          <a className="btnd" target="_blank" rel="noopener noreferrer"  onClick={handleShowEdit} role="button">
-                <BsPencilSquare color="black"  size={20}/>
+    //       <a className="btnd" target="_blank" rel="noopener noreferrer"  onClick={handleShowEdit} role="button">
+    //             <BsPencilSquare color="black"  size={20}/>
+    //         </a>
+    //         <span class="badge rounded-pill badge-success">Active</span>
+
+    //       </li>
+          
+
+          
+    //       )
+    //     })}
+    //   </ul>
+    //   )
+
+
+
+      return(
+        <Container fluid >
+          <Row>
+          <ol class="list-group list-group-numbered">      
+          <Col  >
+        <div >
+          <h1>  </h1>
+        </div>
+  
+        </Col>
+        <Col  >
+          {data.map(item => {
+            return (
+            <li className="list-group-item ">
+            <div className="three  ">
+              <h1> Summery </h1>
+              <p>{item.summery_event}</p>
+            </div>
+            <div className="three">
+              <h1> Start Date </h1>
+              <p>{item.start_time}</p>
+            </div>     
+            <div className="three">
+              <h1> Stop Date </h1>
+              <p>{item.end_time}</p>
+            </div>
+            <a className="btnd" target="_blank" rel="noopener noreferrer"  onClick={handleShowEdit} role="button">
+                 <BsPencilSquare color="black"  size={20}/>
             </a>
-            <span class="badge rounded-pill badge-success">Active</span>
 
-          </li>
-          
+            <a className="btnd" target="_blank" rel="noopener noreferrer"  onClick={handleShowEdit} role="button">
+                 <BsFillTrashFill color="black"  size={20}/>
+            </a>
+            </li>
+            )
+          })}
+          </Col>
+        </ol>
+        </Row>
+        </Container>
+        )
 
-          
-          )
-        })}
-      </ul>
-      )
+
 
   }
 
@@ -313,11 +359,11 @@ function InsertEvent(props) {
           {/* <Col xs={12} xl={6} style={{ backgroundColor: 'red' }}> */}
           <Col xs={12} xl={12}    >
             <div className={'detial-event'}>
-            <p >
-              {/* <span>Default selected date:</span>{data.state.id.toDateString()} */}
-              {/* <span>Default selected date:</span>{data.state()} */}
-              </p>
               <div>
+                hiiiiiiiiiii
+              </div>
+              <div>
+
                     <ul>
                       {  error ?
                         getListItems() : getErrorView()

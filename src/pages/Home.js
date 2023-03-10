@@ -159,19 +159,38 @@ const Home = () => {
 
 
     return(
-
+      <Container fluid >
+        <Row>
       <ul>
-        <span>Default selected date:</span>{date.toDateString()}
+      <Col  >
+      <div cla>
+        <h1> {date.toDateString()} </h1>
+      </div>
+
+      </Col>
+      <Col  >
         {data.map(item => {
           return (
-          <li className="list-group-item list-group-item-action">
-          <p  className="list-group-item-text">summery: {item.summery_event}</p>
-          <p  className="list-group-item-text">start: {item.start_time}</p>
-          <p  className="list-group-item-text">end: {item.end_time}</p>
+          <li className="list-group-item ">
+          <div className="three">
+            <h1> Summery </h1>
+            <p>{item.summery_event}</p>
+          </div>
+          <div className="three">
+            <h1> Start Date </h1>
+            <p>{item.start_time}</p>
+          </div>     
+          <div className="three">
+            <h1> Stop Date </h1>
+            <p>{item.end_time}</p>
+          </div> 
           </li>
           )
         })}
+        </Col>
       </ul>
+      </Row>
+      </Container>
       )
   }
 
@@ -192,22 +211,15 @@ const Home = () => {
           </Col>
           <Col xs={12} xl={4}  >
             <div className={'flex-detail'}>
-            <p >
-              {/* <span>Default selected date:</span>{date.toDateString()} */}
-              </p>
               <div>
-                    <ul>
-
-
                       {  error ?
                         getListItems() : getErrorView()
                       }
-                    </ul>
                     
               </div>
             </div>
           </Col>
-        </Row>
+          </Row>
       </Container>
 
 

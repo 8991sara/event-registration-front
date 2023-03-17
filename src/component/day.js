@@ -18,7 +18,7 @@ import {
 from 'mdb-react-ui-kit';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import {useNavigate} from 'react-router-dom';
 
 function InsertEvent(props) {
 
@@ -41,7 +41,7 @@ function InsertEvent(props) {
   const [showEdit, setShowEdit] = useState(false);
   const handleShowEdit = () => setShowEdit(true);
   
-
+  const navigate = useNavigate();
 
 
 
@@ -61,7 +61,7 @@ function InsertEvent(props) {
   //const [date, setDate] = useState(new Date());
   const location = useLocation();
   const date = location;
-  console.log("date day is ---- >",date);
+  console.log("date 11  day is ---- >",date);
   
 
 
@@ -82,13 +82,13 @@ function InsertEvent(props) {
 
   useEffect(() => {
     const fetchData = async () =>{
-      console.log("mmmmmmmmmmmo --->",date.state.month)
+      //console.log("mmmmmmmmmmmo --->",date.state.month)
       let month = parseInt(date.state.month)+1
-      console.log("mmmnnnnnnnnnno --->", month)
+      //console.log("mmmnnnnnnnnnno --->", month)
       setLoad(true);
       try {
         let pubDate= date.state.fulldate+"-"+month+"-"+date.state.day
-        console.log("pubDate day ----> ",pubDate)
+        //console.log("pubDate day ----> ",pubDate)
         const {data: response} = await axiosBaseURL.get('api/event/', {
           headers:{
             'Authorization': `Bearer ${JSON.parse(localStorage.getItem('access-token'))}`,
@@ -96,13 +96,13 @@ function InsertEvent(props) {
           }
 
         })
-        console.log(response)
+        //console.log(response)
         setData(response);
         setError(true)
-        console.log("resposnse is ----->",response)
+        //console.log("resposnse is ----->",response)
       } catch (err) {
         setError(false)
-        console.error("bbbbbbbbbbbbbb",err.message);
+        //console.error("bbbbbbbbbbbbbb",err.message);
       }
       setLoad(false);
     }
@@ -133,11 +133,11 @@ function InsertEvent(props) {
       } catch (e) {
         //window.location = "/login";
         localStorage.clear();
-        console.log(e)
+        //console.log(e)
         return <Login />;
       }    
   } else {
-    console.log(`token not found`);
+    //console.log(`token not found`);
     return <Login />;
   }
 
@@ -150,35 +150,41 @@ function InsertEvent(props) {
     let timeStampStartDate = Math.floor(new Date(startdate).getTime() / 1000)
     let timeStampSoptDate = Math.floor(new Date(stopdate).getTime() / 1000)
     //console.log("summery ----> " , summery,"start date ----> ",startdate," stop date ----> " ,stopdate, "time stamp start ----> " , timeStampStartDate , " time stop stop ----> " , timeStampSoptDate)
-    console.log(JSON.parse(localStorage.getItem('access-token')))
+    //console.log(JSON.parse(localStorage.getItem('access-token')))
     const fetchData = async () =>{
       setLoad(true);
       try {
         //console.log("pubDate----> ",pubDate)
-        console.log("summery ----> " , summery,"start date ----> ",startdate," stop date ----> " ,stopdate, "time stamp start ----> " , timeStampStartDate , " time stop stop ----> " , timeStampSoptDate)
+        //console.log("summeryy ----> " , summery.toString(),"start date ----> ",startdate," stop date ----> " ,stopdate, "time stamp start ----> " , timeStampStartDate , " time stop stop ----> " , timeStampSoptDate)
 
-        const {data: response} = await axiosBaseURL.post('api/event/create/', {},{
+        const {data: response} = await axiosBaseURL.post('api/event/create/', {
+          'EventSummery' : summery.toString() ,
+          'StartTime': timeStampStartDate.toString(),
+          'EndTime' : timeStampSoptDate.toString()
+        },{
           headers:{
-            'Authorization': `Bearer ${JSON.parse(localStorage.getItem('access-token'))}`,
-            'EventSummery' : summery,
-            'StartTime': timeStampStartDate,
-            'EndTime' : timeStampSoptDate
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${JSON.parse(localStorage.getItem('access-token'))}`
           }
 
         })
 
-
+        //console.log("response -----> ",response)
         setData(response);
         setError(true)
-        console.log("showevent",response)
+        //console.log("showevent",response)
+        //console.log("ggggggggg ---->",  date)
+        window.location.reload(false);
+
       } catch (err) {
         setError(false)
-        //console.error(error.message);
+        // console.error("erro ----> ",error.message);
+        // console.error("erro ----> ",error);
       }
       setLoad(false);
     }
     fetchData();
-    console.log("asas",event)
+    //console.log("asas",event)
 
 	};
 

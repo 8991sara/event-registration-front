@@ -31,7 +31,7 @@ const Home = () => {
       setLoad(true);
       try {
         let pubDate= date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate()
-        console.log("pubDate----> ",pubDate)
+        //console.log("pubDate----> ",pubDate)
         const {data: response} = await axiosBaseURL.get('api/event/', {
           headers:{
             'Authorization': `Bearer ${JSON.parse(localStorage.getItem('access-token'))}`,
@@ -41,10 +41,10 @@ const Home = () => {
         })
         setData(response);
         setError(true)
-        console.log("aaaaaaa",response)
+        //console.log("aaaaaaa",response)
       } catch (err) {
         setError(false)
-        console.error("bbbbbbbbbbbbbb",err.message);
+        //console.error("bbbbbbbbbbbbbb",err.message);
       }
       setLoad(false);
     }
@@ -64,10 +64,6 @@ const Home = () => {
 
 	const clickHandler = (event) => {
 		if(event.detail === 2){
-      //console.log("Double Clicked")
-      //console.log(event.currentTarget.getAttribute("data-value"));
-      //console.log("pppppppppppppppppp",event)
-      // const navigate = useNavigate();
           navigate('/day',{
             state: {
               month: event.currentTarget.getAttribute("getMonth"),
@@ -80,14 +76,14 @@ const Home = () => {
 	}
 
   const showEvenetDetails = event => {
-    console.log("month -------->" ,date.getMonth()+1 )
+    //console.log("month -------->" ,date.getMonth()+1 )
     let month = date.getMonth()+1
     //setDate()
     const fetchData = async () =>{
       setLoad(true);
       try {
         let pubDate= date.getFullYear()+"-"+month+"-"+date.getDate()
-        console.log("pubDate----> ",pubDate)
+        //console.log("pubDate----> ",pubDate)
         const {data: response} = await axiosBaseURL.get('api/event/', {
           headers:{
             'Authorization': `Bearer ${JSON.parse(localStorage.getItem('access-token'))}`,
@@ -97,7 +93,7 @@ const Home = () => {
         })
         setData(response);
         setError(true)
-        console.log("showevent",response)
+        //console.log("showevent",response)
       } catch (err) {
         setError(false)
         //console.error(error.message);
@@ -105,7 +101,7 @@ const Home = () => {
       setLoad(false);
     }
     fetchData();
-    console.log("asas",event)
+    //console.log("asas",event)
   };
 
 

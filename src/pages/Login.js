@@ -28,15 +28,15 @@ function App() {
     if (localStorage.getItem('access-token') !== null) {
         const accessToken = JSON.parse(localStorage.getItem('access-token'));
         //console.log(`token is ${accessToken}`);
-        console.log(`token is avalible`);
+        //console.log(`token is avalible`);
       
         try {
           if (jwt_decode(accessToken).exp < Date.now() / 1000) {
-            console.log(`token is expired`);
+            //console.log(`token is expired`);
             //return <Login />;
             localStorage.clear();
           }else{
-            console.log('token is valid');
+            //console.log('token is valid');
             return <Home />;
             //localStorage.clear();
           } 
@@ -72,12 +72,12 @@ function App() {
     })
     .then(response => {
         if (response.status === 200) {
-        console.log(response.status)
+        //console.log(response.status)
         localStorage.setItem('access-token', JSON.stringify(response.data.access));
         localStorage.setItem('refresh-token', JSON.stringify(response.data.refresh));
         //console.log(response.data.access);
         //console.log(token);
-        console.log("hii");
+        //console.log("hii");
         window.location = "/";
         }
     })

@@ -232,7 +232,7 @@ function InsertEvent(props) {
               <h1> Stop Date </h1>
               <p>{item.end_time}</p>
             </div>
-            <a className="btnd" target="_blank" rel="noopener noreferrer"  onClick={handleShowEdit} role="button">
+            <a className="btnd"  rel="noopener noreferrer"  onClick={handleShowEdit} role="button">
                  <BsPencilSquare color="black"  size={20}/>
             </a>
 

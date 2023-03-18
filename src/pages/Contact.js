@@ -14,13 +14,21 @@ import emailjs from 'emailjs-com';
 
     const sendEmail = (e) => {
       e.preventDefault();
-      console.log(form)
 
-      emailjs.sendForm('service_3oe1jtd', 'template_7jto17m', form.current, 'Cxm_8ytwILPferSdb')
+      const { name, email, message } = e.target.elements
+      let conFom = {
+        name: name.value,
+        email: email.value,
+        message: message.value,
+      }
+      //console.log("form ---->",conFom)
+      emailjs.send('', '', conFom, '')
         .then((result) => {
             console.log(result.text);
+            alert("SUCCESS!");
         }, (error) => {
             console.log(error.text);
+            alert("FAILED...", error);
         });
     };
 
@@ -36,8 +44,8 @@ import emailjs from 'emailjs-com';
 
     return (
       <div className="container mt-5">
-        <h2 className="mb-3">React Contact Form Component Example</h2>
-        <form ref={form}  onSubmit={sendEmail}>
+        <h2 className="mb-3">Contact Me</h2>
+        <form ref={form} id="myForm" onSubmit={sendEmail}>
           <div className="mb-3">
             <label className="form-label" htmlFor="name">
               Name

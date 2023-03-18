@@ -60,8 +60,8 @@ const Blogs = () => {
       <div  className={'app-parent'}>
   
             <div>
-        <h1>Lottie animations.</h1>
-        <p>Lets use it with React.js</p>
+        <h1>shirpala.ir </h1>
+        <p>https://shirpala.ir/blog</p>
         <br />
       </div>
 

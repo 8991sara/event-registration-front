@@ -16,6 +16,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 
 export default function App() {
+  document.title = 'event manager'
   return (
     <BrowserRouter>
     <div className="d-flex flex-column min-vh-100">

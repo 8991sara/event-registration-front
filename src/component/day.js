@@ -221,7 +221,7 @@ function InsertEvent(props) {
             return (
             <div className="list-group-day">
             <div className="three  ">
-              <h1> Summery </h1>
+              <h1> Summary </h1>
               <p>{item.summery_event}</p>
             </div>
             <div className="three">
@@ -232,7 +232,7 @@ function InsertEvent(props) {
               <h1> Stop Date </h1>
               <p>{item.end_time}</p>
             </div>
-            <a className="btnd"  rel="noopener noreferrer"  onClick={handleShowEdit} role="button">
+            <a className="btnd" target="_blank" rel="noopener noreferrer"  onClick={handleShowEdit} role="button">
                  <BsPencilSquare color="black"  size={20}/>
             </a>
 
@@ -287,7 +287,7 @@ function InsertEvent(props) {
                 <Modal.Title>insert event</Modal.Title>
               </Modal.Header>
               <Modal.Body>inser new event
-                  <MDBInput   wrapperClass='mb-4' label='summery' type='text'  value={summery} onChange={(e) => setSummery(e.target.value)} />
+                  <MDBInput   wrapperClass='mb-4' label='Summary' type='text'  value={summery} onChange={(e) => setSummery(e.target.value)} />
                   <span>start date</span>
                   <DatePicker  showIcon  timeInputLabel="Time:" dateFormat="yyyy/MM/dd h:mm aa" showTimeInput selected={startDate} onChange={(startdate) => setStartDate(startdate)} />
                   <span>stop date</span>

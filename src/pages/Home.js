@@ -169,7 +169,7 @@ const Home = () => {
           return (
           <div className="list-group-day">
           <div className="three">
-            <h1> Summery </h1>
+            <h1> Summary </h1>
             <p>{item.summery_event}</p>
           </div>
           <div className="three">

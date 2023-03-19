@@ -21,21 +21,14 @@ import emailjs from 'emailjs-com';
         email: email.value,
         message: message.value,
       }
-      //console.log("form ---->",conFom)
+      console.log("form ---->",conFom)
       emailjs.send('', '', conFom, '')
         .then((result) => {
             console.log(result.text);
-            alert("SUCCESS!");
         }, (error) => {
             console.log(error.text);
-            alert("FAILED...", error);
         });
     };
-
-
-
-
-
 
 
 

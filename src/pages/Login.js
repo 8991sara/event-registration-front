@@ -86,7 +86,7 @@ function App() {
         const notify = () => toast.success("successfully login !",{
           style: {
             borderRadius: '10px',
-            minWidth: '500px',
+            minWidth: '50%',
         },
         duration: 5000
 
@@ -107,7 +107,7 @@ function App() {
             style: {
               borderRadius: '10px',
 
-              minWidth: '500px',
+              minWidth: '50%',
           },
           duration: 5000
   
@@ -124,7 +124,7 @@ function App() {
             borderRadius: '10px',
             background: '#333',
             color: '#fff',      
-            minWidth: '500px',
+            minWidth: '50%',
         },
 
         });
@@ -138,7 +138,7 @@ function App() {
             borderRadius: '10px',
             background: '#333',
             color: '#fff',      
-            minWidth: '500px',
+            minWidth: '50%',
         },
 
         });
@@ -166,7 +166,7 @@ function App() {
         const notify = () => toast.success("your account created  ",{
           style: {
             borderRadius: '10px',
-            minWidth: '500px',
+            minWidth: '50%',
         },
         duration: 5000
 
@@ -191,7 +191,7 @@ function App() {
               borderRadius: '10px',
               background: '#333',
               color: '#fff', 
-              minWidth: '500px',
+              minWidth: '50%',
           },
           duration: 5000
   
@@ -203,7 +203,7 @@ function App() {
             borderRadius: '10px',
             background: '#333',
             color: '#fff',      
-            minWidth: '500px',
+            minWidth: '50%',
         },
 
         });
@@ -218,7 +218,7 @@ function App() {
             borderRadius: '10px',
             background: '#333',
             color: '#fff',      
-            minWidth: '500px',
+            minWidth: '50%',
         },
 
         });
@@ -232,7 +232,7 @@ function App() {
             borderRadius: '10px',
             background: '#333',
             color: '#fff',      
-            minWidth: '500px',
+            minWidth: '50%',
         },
 
         });

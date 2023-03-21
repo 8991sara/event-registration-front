@@ -18,7 +18,6 @@ import {
 from 'mdb-react-ui-kit';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-//import {useNavigate} from 'react-router-dom';
 
 function InsertEvent(props) {
 
@@ -27,7 +26,6 @@ function InsertEvent(props) {
   const [data, setData] = useState([])
   const [error, setError] = useState(false)
   const [startDate, setStartDate] = useState(new Date());
-  //Math.floor(new Date('2012.08.10').getTime() / 1000)
   const [stopDate, setStoptDate] = useState(new Date());
 
   const [showInsert, setShowInsert] = useState(false);
@@ -41,7 +39,6 @@ function InsertEvent(props) {
   const [showEdit, setShowEdit] = useState(false);
   const handleShowEdit = () => setShowEdit(true);
   
-//  const navigate = useNavigate();
 
 
 
@@ -58,10 +55,9 @@ function InsertEvent(props) {
 
 
 
-  //const [date, setDate] = useState(new Date());
   const location = useLocation();
   const date = location;
-  console.log("date 11  day is ---- >",date);
+  //console.log("date 11  day is ---- >",date);
   
 
 
@@ -96,7 +92,8 @@ function InsertEvent(props) {
           }
 
         })
-        //console.log(response)
+        console.log("respone day is --- >",response)
+        console.log(response)
         setData(response);
         setError(true)
         //console.log("resposnse is ----->",response)
@@ -210,29 +207,23 @@ function InsertEvent(props) {
 
       return(
 
-        <Container fluid style={{padding: '10px 10px 10px 10px'}} >
-        <h1>
-          {date.state.fulldate}/{date.state.month}/{date.state.day}
-        </h1>
+        <Container fluid  >
           <Row>
           <div >      
-        <Col  >
+        <Col  xs={12} xl={12} >
           {data.map(item => {
             return (
             <div className="list-group-day">
-            <div className="three  ">
-              <h1> Summary </h1>
-              <p>{item.summery_event}</p>
+            <div className="summary">
+              <p value={item.summery_event}>{item.summery_event}</p>
             </div>
-            <div className="three">
-              <h1> Start Date </h1>
-              <p>{item.start_time}</p>
+            <div className="date">
+              <p value={item.start_time}> Start: {item.start_time.split('T')[0]} {item.start_time.split('T')[1].split('Z')[0]} </p> 
             </div>     
-            <div className="three">
-              <h1> Stop Date </h1>
-              <p>{item.end_time}</p>
+            <div className="date">
+              <p value={item.end_time} > Stop: {item.end_time.split('T')[0]} {item.end_time.split('T')[1].split('Z')[0]}</p>
             </div>
-            <a className="btnd" target="_blank" rel="noopener noreferrer"  onClick={handleShowEdit} role="button">
+            <a className="btnd"    target="_blank" rel="noopener noreferrer"   key={item} data-iye={item}  onClick={handleShowEdit} role="button">
                  <BsPencilSquare color="black"  size={20}/>
             </a>
 
@@ -262,10 +253,11 @@ function InsertEvent(props) {
  <div>
 
 
-      <Container fluid >
+      <Container fluid style={{padding: '10px 10px 10px 10px'}}>
         <Row>
           {/* <Col xs={12} xl={6} style={{ backgroundColor: 'blue' }}> */}
-          <Col xs={12} xl={12} >
+          <Col xs={12} xl={5} >
+            <div className={'flex-detail'}>
             <div className={'toolbar'}>
               <OverlayTrigger
               placement="top"
@@ -306,7 +298,7 @@ function InsertEvent(props) {
 
             <Modal show={showEdit} onHide={handleCloseEdit}>
               <Modal.Header closeButton>
-                <Modal.Title>Modalaaaaaaaaaa heading</Modal.Title>
+                <Modal.Title>Edit Event</Modal.Title>
 
               </Modal.Header>
               <Modal.Body>
@@ -329,14 +321,18 @@ function InsertEvent(props) {
             </Modal>
 
             </div>
+            <h1>
+            {date.state.datetostring}
+            </h1>
+            </div>
           </Col>
 
 
 
           
           {/* <Col xs={12} xl={6} style={{ backgroundColor: 'red' }}> */}
-          <Col xs={12} xl={12}    >
-            <div className="list-day">
+          <Col xs={12} xl={7}    >
+            <div className="flex-detail">
             {/* <div> */}
               <div>
                   

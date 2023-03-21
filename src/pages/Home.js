@@ -69,6 +69,7 @@ const Home = () => {
               month: event.currentTarget.getAttribute("getMonth"),
               day: event.currentTarget.getAttribute("getDay"),
               fulldate: event.currentTarget.getAttribute("fullDate"),
+              datetostring: event.currentTarget.getAttribute("dateToString"),
             },
           });
 
@@ -168,17 +169,14 @@ const Home = () => {
         {data.map(item => {
           return (
           <div className="list-group-day">
-          <div className="three">
-            <h1> Summary </h1>
-            <p>{item.summery_event}</p>
+          <div >
+            <p className="summary">{item.summery_event}</p>
           </div>
-          <div className="three">
-            <h1> Start Date </h1>
-            <p>{item.start_time}</p>
+          <div className="date">
+            <p>Start: {item.start_time.split('T')[0]} {item.start_time.split('T')[1].split('Z')[0]}</p>
           </div>     
-          <div className="three">
-            <h1> Stop Date </h1>
-            <p>{item.end_time}</p>
+          <div className="date">
+            <p>Stop: {item.end_time.split('T')[0]} {item.end_time.split('T')[1].split('Z')[0]}</p>
           </div> 
           </div>
           )
@@ -201,7 +199,7 @@ const Home = () => {
       <Container fluid >
         <Row>
           <Col xs={12} xl={8} >
-            <div  getMonth={date.getMonth()} getDay={date.getDate()} fullDate={date.getFullYear()}   onClick={clickHandler}>
+            <div  dateToString={date.toDateString()} getMonth={date.getMonth()} getDay={date.getDate()} fullDate={date.getFullYear()}   onClick={clickHandler}>
             <Calendar className={'app'}    onChange={setDate} value={date} onClickDay={showEvenetDetails}/>
             </div>
           </Col>

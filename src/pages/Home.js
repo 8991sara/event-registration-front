@@ -203,25 +203,31 @@ const Home = () => {
             <Calendar className={'app'}   onChange={setDate} value={date} onClickDay={showEvenetDetails}
             tileContent={
               ({ activeStartDate, date, view }) => {
+                console.log('month' , view, date.getDay())
                 // return view === 'month' && date.getDay() === 0
                 // ? <p onMouseEnter={
                 //     //do whatever you want
                 //     console.log('hi')
-                //     }>Sunday</p> 
+                //     }>Sunday<  return <p>0aaaaaaaa</p>/p> 
                 // : null
-                return
-                switch(view) {
-                  case "0":
-                    <p>2</p>
-                    break;
-                  case "1":
-                    <p>2</p>
-                    break;
-                  case "2":
-                    <p>2</p>
-                    break;
-                  default:
-                    <p>2</p>
+                
+                switch(date.getDay()) {
+                  case 0:
+                    return <p>Sunday</p>
+
+                  case 1:
+                    return <p>Monday</p>
+                  case 2:
+                   return  <p>tuseday</p>
+                  case 3:
+                    return <p>wednesday</p>
+                  case 4:
+                    return <p>thursday</p>
+                  case 5:
+                   return  <p>friday</p>
+                  case 6:
+                   return  <p>saturday</p>
+
               }
               }
               

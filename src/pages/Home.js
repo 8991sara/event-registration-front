@@ -1,14 +1,14 @@
-import React, { useState , useEffect} from "react";
-import GroovyWalk from "../component/groovyWalk";
 import jwt_decode from "jwt-decode";
-import Login from "./Login";
-import {useNavigate} from 'react-router-dom';import InsertEvent from "../component/day";
-import Calendar from 'react-calendar';
-import axiosBaseURL from '../httpCommon';
-import '../static/calender.css'
+import React, { useEffect, useState } from "react";
+import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Calendar from 'react-calendar';
+import { useNavigate } from 'react-router-dom';
+import GroovyWalk from "../component/groovyWalk";
+import axiosBaseURL from '../httpCommon';
+import '../static/calender.css';
+import Login from "./Login";
 
 
 
@@ -200,7 +200,34 @@ const Home = () => {
         <Row>
           <Col xs={12} xl={8} >
             <div  dateToString={date.toDateString()} getMonth={date.getMonth()} getDay={date.getDate()} fullDate={date.getFullYear()}   onClick={clickHandler}>
-            <Calendar className={'app'}    onChange={setDate} value={date} onClickDay={showEvenetDetails}/>
+            <Calendar className={'app'}   onChange={setDate} value={date} onClickDay={showEvenetDetails}
+            tileContent={
+              ({ activeStartDate, date, view }) => {
+                // return view === 'month' && date.getDay() === 0
+                // ? <p onMouseEnter={
+                //     //do whatever you want
+                //     console.log('hi')
+                //     }>Sunday</p> 
+                // : null
+                return
+                switch(view) {
+                  case "0":
+                    <p>2</p>
+                    break;
+                  case "1":
+                    <p>2</p>
+                    break;
+                  case "2":
+                    <p>2</p>
+                    break;
+                  default:
+                    <p>2</p>
+              }
+              }
+              
+            }
+          
+            />
             </div>
           </Col>
           <Col xs={12} xl={4}  >

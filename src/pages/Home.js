@@ -31,7 +31,7 @@ const Home = () => {
       setLoad(true);
       try {
         let pubDate= date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate()
-        //console.log("pubDate----> ",pubDate)
+        console.log("pubDate----> ",pubDate)
         const {data: response} = await axiosBaseURL.get('api/event/', {
           headers:{
             'Authorization': `Bearer ${JSON.parse(localStorage.getItem('access-token'))}`,
@@ -41,7 +41,8 @@ const Home = () => {
         })
         setData(response);
         setError(true)
-        //console.log("aaaaaaa",response)
+        // console.log("aaaaaaa",response)
+        // console.log(data)
       } catch (err) {
         setError(false)
         //console.error("bbbbbbbbbbbbbb",err.message);
@@ -62,48 +63,48 @@ const Home = () => {
   }, []);
 
 
-	const clickHandler = (event) => {
-		if(event.detail === 2){
-          navigate('/day',{
-            state: {
-              month: event.currentTarget.getAttribute("getMonth"),
-              day: event.currentTarget.getAttribute("getDay"),
-              fulldate: event.currentTarget.getAttribute("fullDate"),
-              datetostring: event.currentTarget.getAttribute("dateToString"),
-            },
-          });
+	// const clickHandler = (event) => {
+	// 	if(event.detail === 2){
+  //         navigate('/day',{
+  //           state: {
+  //             month: event.currentTarget.getAttribute("getMonth"),
+  //             day: event.currentTarget.getAttribute("getDay"),
+  //             fulldate: event.currentTarget.getAttribute("fullDate"),
+  //             datetostring: event.currentTarget.getAttribute("dateToString"),
+  //           },
+  //         });
 
-		}
-	}
+	// 	}
+	// }
 
-  const showEvenetDetails = event => {
-    //console.log("month -------->" ,date.getMonth()+1 )
-    let month = date.getMonth()+1
-    //setDate()
-    const fetchData = async () =>{
-      setLoad(true);
-      try {
-        let pubDate= date.getFullYear()+"-"+month+"-"+date.getDate()
-        //console.log("pubDate----> ",pubDate)
-        const {data: response} = await axiosBaseURL.get('api/event/', {
-          headers:{
-            'Authorization': `Bearer ${JSON.parse(localStorage.getItem('access-token'))}`,
-            'pubDate': pubDate
-          }
+  // const showEvenetDetails = event => {
+  //   console.log("month -------->" ,date.getMonth()+1 )
+  //   let month = date.getMonth()+1
+  //   //setDate()
+  //   const fetchData = async () =>{
+  //     setLoad(true);
+  //     try {
+  //       let pubDate= date.getFullYear()+"-"+month+"-"+date.getDate()
+  //       //console.log("pubDate----> ",pubDate)
+  //       const {data: response} = await axiosBaseURL.get('api/event/', {
+  //         headers:{
+  //           'Authorization': `Bearer ${JSON.parse(localStorage.getItem('access-token'))}`,
+  //           'pubDate': pubDate
+  //         }
 
-        })
-        setData(response);
-        setError(true)
-        //console.log("showevent",response)
-      } catch (err) {
-        setError(false)
-        //console.error(error.message);
-      }
-      setLoad(false);
-    }
-    fetchData();
-    //console.log("asas",event)
-  };
+  //       })
+  //       setData(response);
+  //       setError(true)
+  //       //console.log("showevent",response)
+  //     } catch (err) {
+  //       setError(false)
+  //       //console.error(error.message);
+  //     }
+  //     setLoad(false);
+  //   }
+  //   fetchData();
+  //   //console.log("asas",event)
+  // };
 
 
 
@@ -176,7 +177,7 @@ const Home = () => {
             <p>Start: {item.start_time.split('T')[0]} {item.start_time.split('T')[1].split('Z')[0]}</p>
           </div>     
           <div className="date">
-            <p>Stop: {item.end_time.split('T')[0]} {item.end_time.split('T')[1].split('Z')[0]}</p>
+            {/* <p>Stop: {item.end_time.split('T')[0]} {item.end_time.split('T')[1].split('Z')[0]}</p> */}
           </div> 
           </div>
           )
@@ -189,6 +190,41 @@ const Home = () => {
   }
 
 
+
+  const getListItemss = () => {
+
+
+    return(
+      <Container fluid  style={{padding: '10px 10px 10px 10px'}} >
+        <Row>
+      <ul>
+      <Col  >
+      </Col>
+      <Col  >
+        {data.map(item => {
+          return (
+          <div className="list-group-day">
+          <div >
+            <p className="summary">{item.summery_event}</p>
+          </div>
+          <div className="date">
+            <p>Start: {item.start_time.split('T')[0]} {item.start_time.split('T')[1].split('Z')[0]}</p>
+          </div>     
+          <div className="date">
+            {/* <p>Stop: {item.end_time.split('T')[0]} {item.end_time.split('T')[1].split('Z')[0]}</p> */}
+          </div> 
+          </div>
+          )
+        })}
+        </Col>
+      </ul>
+      </Row>
+      </Container>
+      )
+  }
+
+
+
   return (
     <div>
     {loading ? (
@@ -198,12 +234,14 @@ const Home = () => {
 
       <Container fluid >
         <Row>
-          <Col xs={12} xl={8} >
-            <div  dateToString={date.toDateString()} getMonth={date.getMonth()} getDay={date.getDate()} fullDate={date.getFullYear()}   onClick={clickHandler}>
-            <Calendar className={'app'}   onChange={setDate} value={date} onClickDay={showEvenetDetails}
+          <Col xs={12} xl={12} >
+            {/* <div  dateToString={date.toDateString()} getMonth={date.getMonth()} getDay={date.getDate()} fullDate={date.getFullYear()}   onClick={clickHandler}> */}
+            <div  dateToString={date.toDateString()} getMonth={date.getMonth()} getDay={date.getDate()} fullDate={date.getFullYear()} >
+
+            <Calendar className={'app'}   onChange={setDate} value={date} 
             tileContent={
               ({ activeStartDate, date, view }) => {
-                console.log('month' , view, date.getDay())
+                console.log(date.toDateString()) 
                 // return view === 'month' && date.getDay() === 0
                 // ? <p onMouseEnter={
                 //     //do whatever you want
@@ -213,20 +251,19 @@ const Home = () => {
                 
                 switch(date.getDay()) {
                   case 0:
-                    return <p>Sunday</p>
-
+                    return getListItemss() 
                   case 1:
-                    return <p>Monday</p>
+                    return getListItemss() 
                   case 2:
-                   return  <p>tuseday</p>
+                   return  getListItemss()
                   case 3:
-                    return <p>wednesday</p>
+                    return getListItemss()
                   case 4:
-                    return <p>thursday</p>
+                    return getListItemss()
                   case 5:
-                   return  <p>friday</p>
+                   return  getListItemss()
                   case 6:
-                   return  <p>saturday</p>
+                   return  getListItemss()
 
               }
               }

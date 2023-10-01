@@ -9,7 +9,7 @@ import GroovyWalk from "../component/groovyWalk";
 import axiosBaseURL from '../httpCommon';
 import '../static/calender.css';
 import Login from "./Login";
-
+import GetItemList from"../component/GetItemList"
 
 
 
@@ -35,7 +35,6 @@ const Home = () => {
         const {data: response} = await axiosBaseURL.get('api/event/', {
           headers:{
             'Authorization': `Bearer ${JSON.parse(localStorage.getItem('access-token'))}`,
-            'pubDate': pubDate
           }
 
         })
@@ -191,37 +190,37 @@ const Home = () => {
 
 
 
-  const getListItemss = () => {
+  // const getListItemss = () => {
+  //   console.log('hiiii')
 
-
-    return(
-      <Container fluid  style={{padding: '10px 10px 10px 10px'}} >
-        <Row>
-      <ul>
-      <Col  >
-      </Col>
-      <Col  >
-        {data.map(item => {
-          return (
-          <div className="list-group-day">
-          <div >
-            <p className="summary">{item.summery_event}</p>
-          </div>
-          <div className="date">
-            <p>Start: {item.start_time.split('T')[0]} {item.start_time.split('T')[1].split('Z')[0]}</p>
-          </div>     
-          <div className="date">
-            {/* <p>Stop: {item.end_time.split('T')[0]} {item.end_time.split('T')[1].split('Z')[0]}</p> */}
-          </div> 
-          </div>
-          )
-        })}
-        </Col>
-      </ul>
-      </Row>
-      </Container>
-      )
-  }
+  //   return(
+  //     <Container fluid  style={{padding: '10px 10px 10px 10px'}} >
+  //       <Row>
+  //     <ul>
+  //     <Col  >
+  //     </Col>
+  //     <Col  >
+  //       {data.map(item => {
+  //         return (
+  //         <div className="list-group-day">
+  //         <div >
+  //           <p className="summary">{item.summery_event}</p>
+  //         </div>
+  //         <div className="date">
+  //           <p>Start: {item.start_time.split('T')[0]} {item.start_time.split('T')[1].split('Z')[0]}</p>
+  //         </div>     
+  //         <div className="date">
+  //           {/* <p>Stop: {item.end_time.split('T')[0]} {item.end_time.split('T')[1].split('Z')[0]}</p> */}
+  //         </div> 
+  //         </div>
+  //         )
+  //       })}
+  //       </Col>
+  //     </ul>
+  //     </Row>
+  //     </Container>
+  //     )
+  // }
 
 
 
@@ -238,10 +237,10 @@ const Home = () => {
             {/* <div  dateToString={date.toDateString()} getMonth={date.getMonth()} getDay={date.getDate()} fullDate={date.getFullYear()}   onClick={clickHandler}> */}
             <div  dateToString={date.toDateString()} getMonth={date.getMonth()} getDay={date.getDate()} fullDate={date.getFullYear()} >
 
-            <Calendar className={'app'}   onChange={setDate} value={date} 
+            <Calendar className={'app'}    
             tileContent={
               ({ activeStartDate, date, view }) => {
-                console.log(date.toDateString()) 
+                //console.log(date.toDateString()) 
                 // return view === 'month' && date.getDay() === 0
                 // ? <p onMouseEnter={
                 //     //do whatever you want
@@ -251,19 +250,26 @@ const Home = () => {
                 
                 switch(date.getDay()) {
                   case 0:
-                    return getListItemss() 
+                    //console.log('0')
+                    return <GetItemList date= {date.toDateString()}  />
                   case 1:
-                    return getListItemss() 
+                    // console.log('1')
+                    return <GetItemList date= {date.toDateString()}/> 
                   case 2:
-                   return  getListItemss()
+                    // console.log('2')
+                    return <GetItemList date= {date.toDateString()} />
                   case 3:
-                    return getListItemss()
+                    // console.log('3')
+                    return <GetItemList  userDetails={data}/>
                   case 4:
-                    return getListItemss()
+                    // console.log('4')
+                    return <GetItemList date= {date.toDateString()}/>
                   case 5:
-                   return  getListItemss()
+                    // console.log('5')
+                    return <GetItemList date= {date.toDateString()}/>
                   case 6:
-                   return  getListItemss()
+                    // console.log('6')
+                    return <GetItemList date= {date.toDateString()}/>
 
               }
               }
